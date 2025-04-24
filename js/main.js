@@ -1,14 +1,10 @@
-import {
-    fetchPopularMovies,
-    fetchTopRatedMovies,
-    searchMovies,
-    searchPersons
-  } from './api.js';
-  
-  import { showMovies } from './dom.js';
-  import { showSearchResults, showPersons } from './search.js';
-  import { sortItems } from './sort.js';
-  import { setupModalEvents } from './modal.js';
+
+
+import { setupModalEvents } from './modal.js';
+import { fetchPopularMovies, fetchTopRatedMovies, searchMovies, searchPersons } from './api.js';
+import { renderMovies } from './rendermovies.js';
+import { renderPersons } from './renderPersons.js';
+import { sortItems } from './sort.js';
 setupModalEvents();
 
   
@@ -27,7 +23,7 @@ setupModalEvents();
     currentItems = await fetchPopularMovies();
     currentType = 'movie';
     currentView = 'popular';
-    showMovies(currentItems); // Visar resultatet i gränssnittet
+    renderMovies(currentItems); // Visar resultatet i gränssnittet
   });
   
   // När användaren klickar på "Top Rated"-knappen: hämtas och visa topprankade filmer
@@ -35,7 +31,7 @@ setupModalEvents();
     currentItems = await fetchTopRatedMovies();
     currentType = 'movie';
     currentView = 'top-rated';
-    showMovies(currentItems);
+    renderMovies(currentItems);
   });
   
   // När användaren skickar in sökformuläret
@@ -55,12 +51,12 @@ setupModalEvents();
       currentItems = await searchMovies(query);
       currentType = 'movie';
       currentView = 'search';
-      showSearchResults(currentItems);
+      renderMovies(currentItems);
     } else {
       currentItems = await searchPersons(query);
       currentType = 'person';
       currentView = 'search';
-      showPersons(currentItems);
+      renderPersons(currentItems);
     }
   });
   
@@ -72,13 +68,13 @@ setupModalEvents();
     
     if (currentType === 'movie') {
       if (currentView === 'search') {
-        showSearchResults(sorted); // Visar sorterade filmer från en sökning
+        renderMovies(sorted); // Visar sorterade filmer från en sökning
       } else {
-        showMovies(sorted); // Visar sorterade filmer från t.ex. "Populära" eller "Topprankade"
+        renderMovies(sorted); // Visar sorterade filmer från t.ex. "Populära" eller "Topprankade"
 
       }
     } else {
-      showPersons(sorted); // Visar sorterade resultat för personer (t.ex. om man sökt på en skådespelare)
+      renderPersons(sorted); // Visar sorterade resultat för personer (t.ex. om man sökt på en skådespelare)
     }
   });
   

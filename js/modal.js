@@ -1,4 +1,8 @@
-// Hämtar de element som behövs
+
+
+
+// Hämtar de element som behövs för modalen
+
 const modal = document.getElementById('details-modal');
 const modalBody = document.getElementById('modal-body');
 const closeButton = document.getElementById('modal-close');

@@ -1,18 +1,20 @@
+
 import { showModal } from './modal.js';
 import { fetchMovieDetails } from './api.js';
 
 // Visar en lista med filmer i DOM:en.
 // Varje film renderas som ett kort med bild, titel, releasedatum och popularitet.
 
-export function showMovies(movies) {
+export function renderMovies(movies) {
   const container = document.getElementById('movie-list');
   container.innerHTML = '';
 
 
-  // Itererar över varje film och skapar ett element i DOM:en
+// Itererar över varje film och skapar ett element i DOM:en
   movies.forEach((movie) => {
     const movieEl = document.createElement('div');
     movieEl.classList.add('movie');
+
 
     // Sätter in filmens bild, titel, releasedatum och populariteten
     movieEl.innerHTML = `
@@ -22,25 +24,24 @@ export function showMovies(movies) {
       <p>Popularity: ${movie.popularity}</p>
     `;
 
-    // gör så det går att kliccka på filmen för att visa mer detaljer i en modal
+    // Gör så det går att klicka på filmkortet för att visa mer detaljer i en modal
     movieEl.addEventListener('click', async () => {
-
-      // Hämta filmens detaljer och trailers
-      const details = await fetchMovieDetails(movie.id);
+      const details = await fetchMovieDetails(movie.id); // Hämtar filmens detaljer och trailer
       if (!details) return;
 
-      // Bygger genrelistan
-      const genres = details.genres.map(g => g.name).join(', ') || 'Okänt';
       
-      // Letar efter YouTube-trailer om den finns och tillåter dem att spelas i fullscreen.
+     // Bygger genrelistan
+      const genres = details.genres.map(g => g.name).join(', ') || 'Okänt';
+
+    // Letar efter YouTube-trailer om den finns och tillåter dem att spelas i fullscreen.
       const trailer = details.videos.results.find(v => v.site === 'YouTube' && v.type === 'Trailer');
       const trailerEmbed = trailer
-        ? `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${trailer.key}" 
-                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>` //// Om trailer finns, skapa en iframe som bäddar in videon. Annars visa meddelande
-        : '<p>Ingen trailer tillgänglig.</p>';
+        ? `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${trailer.key}"
+                  frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>` 
+        : '<p>Ingen trailer tillgänglig.</p>'; //// Om trailer finns, skapas en iframe som bäddar in videon. Annars visas meddelande
 
-      // Innehållet som ska visas i modalen
+
+        // Innehållet som ska visas i modalen
       const content = `
         <h2>${details.title}</h2>
         <p><strong>Genre:</strong> ${genres}</p>
@@ -54,6 +55,6 @@ export function showMovies(movies) {
       showModal(content); // Visar modalens innehåll
     });
 
-    container.appendChild(movieEl); //
+    container.appendChild(movieEl); // Lägger till filmkortet i DOM:en
   });
 }

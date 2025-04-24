@@ -3,12 +3,15 @@ import { showModal } from './modal.js';
 import { fetchMovieDetails } from './api.js';
 
 
+//Visar en lista med filmer baserat på sökresultat.
+ // Varje film presenteras med poster, titel, datum, popularitet och kort beskrivning.
+
 export function showSearchResults(movies) {
     const container = document.getElementById('movie-list');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Rensar tidigare sökresultat
   
     if (movies.length === 0) {
-      container.innerHTML = '<p>Inga resultat hittades.</p>';
+      container.innerHTML = '<p>Inga resultat hittades.</p>'; // Om inga filmer hittades, visas meddelande
       return;
     }
   
@@ -16,6 +19,8 @@ export function showSearchResults(movies) {
       const el = document.createElement('div');
       el.classList.add('movie');
   
+    
+      // Skapar HTML för varje filmkort
       el.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}" />
         <h2>${movie.title}</h2>
@@ -24,7 +29,7 @@ export function showSearchResults(movies) {
         <p>${movie.overview}</p>
       `;
 
-      // Använder mig av samma klickevent som i showMovies!
+      // Använder mig av samma klickevent som i showMovies (dom.js) (tyvärr lite repatativ kod)
         el.addEventListener('click', async () => {
         const details = await fetchMovieDetails(movie.id);
         if (!details) return;
@@ -57,24 +62,31 @@ export function showSearchResults(movies) {
     });
   }
   
+  // Funktion som visar en lista med personer (skådespelare, regissörer etc.) från en sökning.
+  // Varje person visas med bild, namn, popularitet och vad de är kända för.
+
   export function showPersons(persons) {
     const container = document.getElementById('movie-list');
     container.innerHTML = '';
   
     if (persons.length === 0) {
-      container.innerHTML = '<p>Inga resultat hittades.</p>';
+      container.innerHTML = '<p>Inga resultat hittades.</p>'; // Om inga personer hittades, visa meddelande
       return;
     }
   
-    persons.forEach((person) => {
+    persons.forEach((person) => { // Skapar och visar varje persons kort i DOM:en
       const el = document.createElement('div');
       el.classList.add('movie');
   
+
+      // Skapar en lista av produktioner personen är känd för
       const knownFor = person.known_for.map(item => {
         const type = item.media_type === 'movie' ? 'Movie' : 'TV';
         return `${type}: ${item.title || item.name}`;
       }).join('<br>');
-  
+
+
+       // Renderar personens kort med namn, bild och "känd för"
       el.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w200${person.profile_path}" alt="${person.name}" />
         <h2>${person.name}</h2>
