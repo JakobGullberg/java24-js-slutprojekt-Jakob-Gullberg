@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <script src="./js/main.js"></script>
-   <title>Countries</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <script type="module" src="./js/main.js">defer</script>
 
 </head>
 <body>
-    <div id="countryContainer"></div>
+  <header>
+    <h1>Movie Explorer</h1>
+    <nav>
+      <button id="top-rated-btn">Top Rated</button>
+      <button id="popular-btn">Popular</button>
+      <form id="search-form">
+        <input type="text" id="search-input" name="query" placeholder="Sök efter film eller person..." required />
+        <select id="search-type" name="type">
+          <option value="movie">Film</option>
+          <option value="person">Person</option>
+        </select>
+        <button type="submit">Sök</button>
+      </form>
+      
+    </nav>
+  </header>
+  <section id="sort-section">
+    <label for="sort-select">Sortera efter:</label>
+    <select id="sort-select">
+      <option value="default">Standard</option>
+      <option value="title-asc">Titel A-Ö</option>
+      <option value="title-desc">Titel Ö-A</option>
+      <option value="popularity-asc">Popularitet stigande</option>
+      <option value="popularity-desc">Popularitet fallande</option>
+    </select>
+  </section>
+  
+  <main id="movie-list">
+    <!-- Filmer kommer laddas här -->
+  </main>
+  <!-- 📦 Modal för detaljer och trailer -->
+<div id="details-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="modal-close">&times;</span>
+      <div id="modal-body">
+        <!-- Innehåll fylls i med JS -->
+      </div>
+    </div>
+  </div>
 </body>
 </html>
