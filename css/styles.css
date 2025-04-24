@@ -1,51 +1,188 @@
+/* Grundinställningar */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  
-  header {
-    margin-bottom: 20px;
-  }
-  
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9; /* Lättare bakgrundsfärg för att göra sidan luftigare */
+  color: #333;
+  margin: 0;
+}
+
+header {
+  margin-bottom: 20px;
+  text-align: center; /* Centrerar rubriken */
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #333;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav button {
+  margin: 5px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+nav button:hover {
+  background-color: #0056b3;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+form input,
+form select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  outline: none;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+#sort-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#sort-select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 220px;
+}
+
+/* Movie Section */
+.movie {
+  display: inline-block;
+  width: 100%;
+  max-width: 250px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.movie h3 {
+  margin: 15px 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.movie p {
+  margin: 0 10px 15px;
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #333;
+}
+
+.modal-close:hover {
+  color: red;
+}
+
+/* Responsivitet */
+@media (max-width: 768px) {
   .movie {
-    margin-bottom: 20px;
-  }
-  
-  .movie img {
-    border-radius: 10px;
+    max-width: 100%;
+    margin: 10px 0;
   }
 
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  .movie img {
+    height: 250px;
   }
-  
-  .modal.hidden {
-    display: none;
+
+  form input, form select {
+    width: 150px;
   }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 100%;
+
+  form button {
+    padding: 10px 18px;
   }
-  
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 30px;
+
+  header h1 {
+    font-size: 2rem;
   }
-  
-  
+
+  #sort-select {
+    width: 150px;
+  }
+}
