@@ -2,7 +2,7 @@
 
 import { setupModalEvents } from './modal.js';
 import { fetchPopularMovies, fetchTopRatedMovies, searchMovies, searchPersons } from './api.js';
-import { renderMovies } from './rendermovies.js';
+import { renderMovies } from './renderMovies.js';
 import { renderPersons } from './renderPersons.js';
 import { sortItems } from './sort.js';
 setupModalEvents();
