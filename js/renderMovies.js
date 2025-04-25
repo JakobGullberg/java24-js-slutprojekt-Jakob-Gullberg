@@ -2,16 +2,15 @@
 import { showModal } from './modal.js';
 import { fetchMovieDetails } from './api.js';
 
-// Visar en lista med filmer i DOM:en.
 // Varje film renderas som ett kort med bild, titel, releasedatum och popularitet.
 
 export function renderMovies(movies) {
   const container = document.getElementById('movie-list');
   container.innerHTML = '';
 
-  // Kolla om listan är tom
+  
   if (!movies || movies.length === 0) {
-    container.innerHTML = '<p>Inga filmer hittades.</p>';
+    container.innerHTML = '<p>Inga filmer hittades.</p>'; // ger användaren ett meddelande om filmen inte finns
     return;
   }
 
@@ -32,11 +31,11 @@ export function renderMovies(movies) {
 
     // Gör så det går att klicka på filmkortet för att visa mer detaljer i en modal
     movieEl.addEventListener('click', async () => {
-      const details = await fetchMovieDetails(movie.id); // Hämtar filmens detaljer och trailer
+      const details = await fetchMovieDetails(movie.id);
       if (!details) return;
 
       
-     // Bygger genrelistan
+     // Bygger genrelistan (finns bara i modalen)
       const genres = details.genres.map(g => g.name).join(', ') || 'Okänt';
 
     // Letar efter YouTube-trailer om den finns och tillåter dem att spelas i fullscreen.
@@ -61,6 +60,6 @@ export function renderMovies(movies) {
       showModal(content);
     });
 
-    container.appendChild(movieEl); // Lägger till filmkortet i DOM:en
+    container.appendChild(movieEl); 
   });
 }
