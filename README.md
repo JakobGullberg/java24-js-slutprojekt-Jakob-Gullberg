@@ -1,6 +1,6 @@
 # 🎬 Movie Explorer
 
-Movie Explorer är en webbaserad applikation där användare kan:
+Movie And Actor/Director Explorer är en webbaserad applikation där användare kan:
 
 - Utforska populära och topprankade filmer
 - Söka efter filmer eller skådespelare
@@ -12,7 +12,7 @@ All data hämtas från [The Movie Database (TMDB)](https://www.themoviedb.org/do
 ## 🚀 Kom igång
 
 1. Klona detta repo
-2. Öppna `index.html` i din webbläsare (helst med Live Server via vsCode)
+2. Öppna `index.html` i din webbläsare (helst med Live Server via vsCode eller liknade)
 3. Utforska filmer, sök, klicka, kolla trailers 🎥
 
 ## 🧩 Funktioner
@@ -28,7 +28,9 @@ All data hämtas från [The Movie Database (TMDB)](https://www.themoviedb.org/do
 Projektet är uppdelat i tre huvuddelar:
 
 index.html – Huvudsidan där all HTML finns.
+
 css/styles.css – Innehåller all styling för projektet.
+
 js/ – Här ligger all JavaScript-logik uppdelad i modul-filer:
 main.js – Den centrala filen som styr interaktionen och knyter ihop alla delar.
 api.js – Hämtar data från TMDB:s API (filmer, personer, trailers, etc).

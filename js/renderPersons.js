@@ -1,13 +1,14 @@
 
-
 // Funktion som visar en lista med personer (skådespelare, regissörer etc.) från en sökning.
 // Varje person visas med bild, namn, popularitet och vad de är kända för.
+
+
 export function renderPersons(persons) {
     const container = document.getElementById('movie-list');
     container.innerHTML = '';
   
     if (persons.length === 0) {
-      container.innerHTML = '<p>Inga resultat hittades.</p>'; // Om inga personer hittades, visa meddelande
+      container.innerHTML = '<p>Inga personer hittades.</p>'; // Om inga personer hittades, visa meddelande
       return;
     }
   

@@ -12,7 +12,7 @@ setupModalEvents();
   let currentType = 'movie';        // Typen av data: 'movie' eller 'person'
   let currentView = 'default';      // Aktuellt visningsläge: 'popular', 'top-rated' eller 'search'
   
-  // Referenser till HTML-element för att underlätta eventhantering
+ 
   const popularBtn = document.getElementById('popular-btn');
   const topRatedBtn = document.getElementById('top-rated-btn');
   const searchForm = document.getElementById('search-form');
@@ -23,7 +23,7 @@ setupModalEvents();
     currentItems = await fetchPopularMovies();
     currentType = 'movie';
     currentView = 'popular';
-    renderMovies(currentItems); // Visar resultatet i gränssnittet
+    renderMovies(currentItems); 
   });
   
   // När användaren klickar på "Top Rated"-knappen: hämtas och visa topprankade filmer
@@ -34,7 +34,7 @@ setupModalEvents();
     renderMovies(currentItems);
   });
   
-  // När användaren skickar in sökformuläret
+  
   searchForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Hindrar att sidan laddas om
   

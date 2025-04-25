@@ -62,7 +62,7 @@ export async function fetchTopRatedMovies() {
     const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=sv-SE&append_to_response=videos`;
     try {
       const res = await fetch(url);
-      return await res.json(); // Returnerar hela filmobjektet inkl. trailers
+      return await res.json(); // Returnerar hela filmobjektet inkl. trailern för valt filmporträtt
     } catch (err) {
       console.error('Fel vid hämtning av filmdetaljer:', err);
       return null;

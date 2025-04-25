@@ -35,7 +35,7 @@
         sorted.sort((a, b) => b.popularity - a.popularity);
         break;
 
-        // Om ingen matchning hittas, returnera osorterad lista
+        // Om ingen matchning hittas, returnera osorterad lista (vilket är förinställt val)
       default:
         break; 
     }

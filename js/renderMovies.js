@@ -9,6 +9,12 @@ export function renderMovies(movies) {
   const container = document.getElementById('movie-list');
   container.innerHTML = '';
 
+  // Kolla om listan är tom
+  if (!movies || movies.length === 0) {
+    container.innerHTML = '<p>Inga filmer hittades.</p>';
+    return;
+  }
+
 
 // Itererar över varje film och skapar ett element i DOM:en
   movies.forEach((movie) => {
@@ -52,7 +58,7 @@ export function renderMovies(movies) {
         ${trailerEmbed}
       `;
 
-      showModal(content); // Visar modalens innehåll
+      showModal(content);
     });
 
     container.appendChild(movieEl); // Lägger till filmkortet i DOM:en
